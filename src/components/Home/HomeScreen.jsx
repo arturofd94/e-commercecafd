@@ -26,41 +26,33 @@ const HomeScreen = () => {
 
   } , [searchedProduct])
 
-  console.log(filteredProduct)
-
-
-
   return (
     <div className='content'>
       <section className='main_container'>
         <div className='search_box'>
           <Form setSearchedProduct={setSearchedProduct}/>
         </div>
-        
+          <ul className='products_list'>
             {
               filteredProduct 
               
               ?
 
               filteredProduct?.map( product => (
-          
                 <ProductCard
                 key={product.id}
                 product={product}
                 />
                 ))
-
               :
-              
                products?.map( product => (
-          
                 <ProductCard
                 key={product.id}
                 product={product}
                 />
                 ))
             }
-        
+          </ul>
       </section>
     </div>
   )

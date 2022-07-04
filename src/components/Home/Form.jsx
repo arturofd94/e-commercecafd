@@ -8,13 +8,15 @@ const Form = ({ setSearchedProduct }) => {
 
 
   return (
-    <form >
-        <input 
-        type="text"
-        placeholder='What are you looking for?'
-        onChange={inputProducts}
-        />
-    </form>
+    <div className='search_box'>
+      <form className='input'>
+          <input 
+          type="text"
+          placeholder='What are you looking for?'
+          onChange={inputProducts}
+          />
+      </form>
+    </div>
   )
 }
 
