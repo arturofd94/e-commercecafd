@@ -174,21 +174,40 @@ body {
 .cart {
   position: fixed;
   right: 0;
-  display: none;
+  display: flex;
   flex-direction: column;
   z-index: 1;
   width: min(300px, 100%);
   height: calc(100vh - 60px);
   background-color: white;
+  transition-property: translate;
+  transition: 0.200s ease-in-out;
+  transform: translate(300px, 0);
+  border-left: 1px solid rgb(34 193 195);
 }
 
 .cart.open {
-  display: flex;
+  transform: translate(0);
 }
 
 .cart__products {
   flex-grow: 1;
   border-bottom: 1px solid gray;
+  overflow-y: auto;
+}
+
+.cart__products::-webkit-scrollbar {
+  width: 7px;
+}
+
+.cart__products::-webkit-scrollbar-thumb {
+  background-color: rgba(45,161,253,1);
+  border-radius: 4px;
+}
+
+.cart__products .item:last-of-type {
+  border-bottom: none;
+  margin-bottom: 0;
 }
 
 .cart__results,
@@ -212,5 +231,59 @@ body {
   padding: 10px;
   font-size: 1.5rem;
   width: 100%;
-  background-color: rgba(45, 159, 253, 0.285);
+  color: white;
+  background-color: rgba(45,161,253,1);
+}
+
+.item {
+  display: grid;
+  grid-template-areas: "mark mark button"
+                       "name name name"
+                       "quantity none none"
+                       "results results results";
+  grid-template-rows: 30px auto repeat(2, 30px);
+  grid-template-columns: repeat(3, 89px);
+  align-items: center;
+  color: #4f4f4f;
+  border-bottom: 1px solid #4f4f4f;
+  margin-bottom: 1rem;
+}
+
+.item__mark {
+  grid-area: mark;
+  color: #c7c7c7;
+}
+
+.item__name {
+  grid-area: name;
+  font-weight: bold;
+}
+
+.item__quantity {
+  grid-area: quantity;
+  justify-self: center;
+  border: 1px solid #c7c7c7;
+  min-width: 40px;
+  text-align: center;
+}
+
+.item__button {
+  grid-area: button;
+  justify-self: end;
+  cursor: pointer;
+  color: rgb(209, 35, 35);
+}
+
+.item__button:hover {
+  transform: scale(1.1, 1.1);
+}
+
+.item__results {
+  display: flex;
+  justify-content: space-between;
+  grid-area: results;
+}
+
+.item__totalText {
+  font-weight: bold;
 }

@@ -1,4 +1,5 @@
 import React from 'react'
+import ItemCart from './ItemCart'
 
 const Cart = ({cartOpen}) => {
 
@@ -6,7 +7,13 @@ const Cart = ({cartOpen}) => {
     <section className={`cart ${cartOpen && 'open'}`}>
         <h2 className='cart__title'>Shopping Cart</h2>
         <section className='cart__products'>
-            <h2>GOla</h2>
+          <ItemCart />
+          <ItemCart />
+          <ItemCart />
+          <ItemCart />
+          <ItemCart />
+          <ItemCart />
+          <ItemCart />
         </section>
         <section className='cart__results'>
             <article className='cart__total'>
