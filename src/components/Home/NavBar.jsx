@@ -1,13 +1,14 @@
-import React from 'react'
+import Cart from './Cart'
 import { useNavigate } from 'react-router-dom'
 import { Outlet } from 'react-router-dom'
+import { useState } from 'react'
 
 const NavBar = () => {
-
+    const [cartOpen, setCartOpen] = useState(false)
     const navigate = useNavigate()
 
     const goToHome = () => navigate('/')
-
+    const handleClickCart = () => setCartOpen(!cartOpen)
   return (
     <>
     <div className='navbar'>
@@ -20,13 +21,17 @@ const NavBar = () => {
                 <button className='nav_icon'>
                     <i className='bx bx-shopping-bag icon_user'></i>
                 </button>
-                <button className='nav_icon'>
+                <button 
+                    className='nav_icon'
+                    onClick={handleClickCart}
+                >
                     <i className='bx bx-cart icon_user'></i>
                 </button>
             </nav>
             <div className='cart_modal'></div>
         </div> 
     </div>
+    <Cart cartOpen={cartOpen}/>
     <Outlet/>
     </>
   )
