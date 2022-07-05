@@ -7,24 +7,21 @@ import Form from './Form'
 
 const HomeScreen = () => {
 
-  const [searchedProduct, setSearchedProduct] = useState()
-  const [filteredProduct, setFilteredProduct] = useState()
+  const [searchedProduct, setSearchedProduct] = useState('')
+  const [filteredProduct, setFilteredProduct] = useState(null)
 
   const dispatch = useDispatch()
+  const products = useSelector(state => state.products)
   
   useEffect(() => {
     dispatch(getProducts())
   } , [])
-
-  const products = useSelector(state => state.products)
-
-
+  
   useEffect(() => {
-    
-      setFilteredProduct(products?.filter(e => e.title.includes(searchedProduct?.toLowerCase())))
-    
-
-  } , [searchedProduct])
+      const arrayFilter = products?.filter(e => e.title.toLowerCase().includes(searchedProduct?.toLowerCase()))
+      setFilteredProduct(arrayFilter)
+  }, [searchedProduct, products])
+  
 
   return (
     <div className='content'>
@@ -34,18 +31,7 @@ const HomeScreen = () => {
         </div>
           <ul className='products_list'>
             {
-              filteredProduct 
-              
-              ?
-
               filteredProduct?.map( product => (
-                <ProductCard
-                key={product.id}
-                product={product}
-                />
-                ))
-              :
-               products?.map( product => (
                 <ProductCard
                 key={product.id}
                 product={product}
