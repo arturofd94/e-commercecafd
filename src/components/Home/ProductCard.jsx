@@ -17,7 +17,6 @@ const ProductCard = ({ product }) => {
           <div className='card_info'>
             <span className='brand'>{product.title}</span>
               <div><p className='price'>Price</p></div>
-            
           </div>
       </div>
     </li>
