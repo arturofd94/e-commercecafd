@@ -6,6 +6,7 @@ const Form = ({ setSearchedProduct }) => {
         setSearchedProduct(e.target.value)
     }
 
+    console.log('Hola')
 
   return (
     <div className='search_box'>
