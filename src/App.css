@@ -93,6 +93,7 @@ body {
 
 .search_box .input {
   display: flex;
+  margin: 0 auto;
   margin-bottom: 15px;
   max-width: 900px;
 }
@@ -111,11 +112,13 @@ body {
   flex-wrap: wrap;
   list-style: none;
   padding: 0px 20px 15px 20px ;
+  justify-content: center;
 }
 
 .products_list li {
   padding: 20px 10px;
   width: 100%;
+  max-width: 400px;
 }
 
 .product_card {
