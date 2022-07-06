@@ -469,6 +469,7 @@ body {
   text-decoration: none;
   color: rgb(0, 89, 161);
   font-weight: 300;
+  width: 50px;
 }
 
 .history .separator {
