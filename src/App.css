@@ -9,6 +9,7 @@ h1, h2, h3, p, ul {
 
 ul {
   list-style: none;
+  padding: 0;
 }
 
 html {
@@ -446,4 +447,98 @@ body {
 
 .item__totalText {
   font-weight: bold;
+}
+
+/* Purchases section */
+
+.main_container_purchases {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 14px 20px;
+}
+
+.history{
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.history a {
+  text-decoration: none;
+  color: rgb(0, 89, 161);
+  font-weight: 300;
+}
+
+.history .separator {
+  background: rgb(0, 89, 161);
+  border-radius: 50%;
+  height: 6px;
+  margin: 0 12px;
+  width: 6px;
+  margin-top: 4px;
+}
+
+.history p {
+  color: rgb(0, 89, 161);
+  font-weight: 700;
+}
+
+.history a:hover {
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.main_container_purchases h1 {
+  margin-bottom: 30px;
+  color: rgb(0, 89, 161);
+}
+
+.purchase_item {
+  border: 1px solid gray;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  background-color: white;
+}
+
+.purchase_item .header {
+  border-bottom: 1px solid gray;
+  padding: 10px;
+  font-weight: 600;
+}
+
+.purchases_list {
+  padding: 30px 10px 10px;
+}
+
+.product_item {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  height: 60px;
+  margin-bottom: 20px;
+}
+
+.product_item .name {
+  font-size: 1rem;
+  width: 50%;
+  font-weight: 600;
+}
+
+.quantity {
+  padding: 0 10px;
+  width: 60px;
+}
+
+.quantity .box {
+  border: 1px solid gray;
+  margin: 0 auto;
+  max-width: 65px;
+  text-align: center;
+}
+
+.product_item .price {
+  padding: 0 10px;
+  width: 60px;
+  font-weight: 300;
 }
