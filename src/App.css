@@ -324,10 +324,12 @@ body {
   font-weight: bold;
   font-size: 1.2rem;
   border-radius: 3px;
+  cursor: pointer;
 }
 
 .category {
   margin-bottom: 0.5rem;
+  cursor: pointer;
 }
 
 /* Cart */
