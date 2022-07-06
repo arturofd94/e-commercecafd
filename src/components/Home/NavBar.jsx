@@ -8,6 +8,7 @@ const NavBar = () => {
     const navigate = useNavigate()
 
     const goToHome = () => navigate('/')
+    const goToPurchases = () => navigate('/purchases')
     const handleClickCart = () => setCartOpen(!cartOpen)
   return (
     <>
@@ -18,7 +19,7 @@ const NavBar = () => {
                 <button className='nav_icon'>
                     <i className='bx bxs-user icon_user'></i>
                 </button>
-                <button className='nav_icon'>
+                <button className='nav_icon' onClick={goToPurchases}>
                     <i className='bx bx-shopping-bag icon_user'></i>
                 </button>
                 <button 
