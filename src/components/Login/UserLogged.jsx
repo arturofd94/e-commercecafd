@@ -1,10 +1,17 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 
 const UserLogged = () => {
 
   const user = JSON.parse(localStorage.getItem('NameUser'))
 
-  console.log(user)
+
+  const click = ()=>{
+    localStorage.removeItem('token','')
+    localStorage.removeItem('NameUser', '')
+  }
+
+
 
   return (
     <div className='contain-logged'>
@@ -12,7 +19,9 @@ const UserLogged = () => {
         <i className='bx bxs-user-circle' ></i> <h3 h3 className='checked'>✔</h3>
         <h2 className='name-user'>{`${user && user?.firstName} ${user && user?.lastName}`}</h2>
       </div>
-      <h3 className='text-logged'>User Logged </h3>
+      <NavLink to={"/login"} onClick={click} className="Navlink">
+      <h3 className='text-logged'>Log out</h3>
+      </NavLink>
     </div>
   )
 }
