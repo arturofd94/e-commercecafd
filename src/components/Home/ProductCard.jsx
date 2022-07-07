@@ -12,8 +12,8 @@ const ProductCard = ({ product }) => {
     e.stopPropagation()
     const url = 'https://ecommerce-api-react.herokuapp.com/api/v1/cart'
     const productPrueba = {
-      id: 2, 
-      quantity: 1
+      id: 3, 
+      quantity: 4
     }
     axios.post(url, productPrueba, getConfig())
     .then(res => console.log(res.data))
