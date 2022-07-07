@@ -2,21 +2,25 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import getConfig from '../../utils/getConfig.js'
+import { useDispatch } from 'react-redux'
+import { getProductsCart } from '../../store/slices/cartProducts.slice.js'
 
 const ProductCard = ({ product }) => {
   const navigate = useNavigate()
-
+  const dispatch = useDispatch()
   const goToProduct = () => navigate(`/product/${product.id}`)
-  
   const addProductCart = e => {
     e.stopPropagation()
-    const url = 'https://ecommerce-api-react.herokuapp.com/api/v1/cart'
-    const productPrueba = {
-      id: 2, 
-      quantity: 1
+    const url = `https://ecommerce-api-react.herokuapp.com/api/v1/cart/`
+    const productSend = {
+      id: product.id, 
+      quantity: 2
     }
-    axios.post(url, productPrueba, getConfig())
-    .then(res => console.log(res.data))
+    axios.post(url, productSend, getConfig())
+    .then(res => {
+      dispatch(getProductsCart())
+      console.log(res.data)
+    })
     .catch(err => console.log(err))
   }
   return (
