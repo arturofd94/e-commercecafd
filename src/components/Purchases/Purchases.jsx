@@ -8,13 +8,11 @@ const ProductId = () => {
 
   const [purchases, setPurchases] = useState()
 
-  useEffect (() => {
-    const URL = 'https://ecommerce-api-react.herokuapp.com/api/v1/purchases'
-
-    axios.get(URL, getConfig())
-    .then(res => console.log(res.data))
+  useEffect(() => {
+    const url = 'https://ecommerce-api-react.herokuapp.com/api/v1/purchases'
+    axios.get(url, getConfig())
+    .then(res => setPurchases(res.data.data.purchases))
     .catch(err => console.log(err))
-
   }, [])
 
 
@@ -26,8 +24,16 @@ const ProductId = () => {
         <p>Purchases</p>
       </div>
       <h1> My purchases </h1>
-      {/* Map del endpoint Purchases */}
-      <PurchasesCard/>
+      {
+        purchases?.map( purchase => (
+
+          <PurchasesCard
+          key={purchase.id}
+          purchase={purchase}
+          />
+
+        ))
+      }
     </section>
   )
 }
