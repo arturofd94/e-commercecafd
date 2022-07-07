@@ -2,6 +2,6 @@
 
 Proyecto grupal de un e-commerce con peticiones a una API, realizado por:
 
-Junior Pacheco
-Carlos Arturo de la Fuente
-Luis Velazco
+Junior Pacheco \n
+Carlos Arturo de la Fuente \n
+Luis Velazco \n
