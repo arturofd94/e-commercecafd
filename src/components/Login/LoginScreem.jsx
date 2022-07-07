@@ -10,7 +10,6 @@ const LoginScreem = () => {
   const changedToken = localStorage.getItem('token')
 
   useEffect(() => {
-    
     setToken(changedToken)
   }, [changedToken])
 
@@ -20,7 +19,7 @@ const LoginScreem = () => {
       {
         token
           ?
-          <UserLogged />
+          <UserLogged setToken={setToken}/>
           :
           <Login />
       }

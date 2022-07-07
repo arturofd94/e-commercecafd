@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
-const UserLogged = () => {
+const UserLogged = ({setToken}) => {
 
   const user = JSON.parse(localStorage.getItem('NameUser'))
 
@@ -9,6 +9,8 @@ const UserLogged = () => {
   const click = ()=>{
     localStorage.removeItem('token','')
     localStorage.removeItem('NameUser', '')
+    const newToken = localStorage.getItem('token')
+    setToken(newToken)
   }
 
 

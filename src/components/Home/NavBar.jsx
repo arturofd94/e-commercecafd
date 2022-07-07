@@ -33,7 +33,9 @@ const NavBar = () => {
             <div className='cart_modal'></div>
         </div> 
     </div>
-    <Cart cartOpen={cartOpen}/>
+    {
+        cartOpen && <Cart cartOpen={cartOpen} setCartOpen={setCartOpen}/> 
+    }
     <Outlet/>
     </>
   )

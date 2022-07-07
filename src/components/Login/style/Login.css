@@ -139,11 +139,12 @@
     justify-content:space-evenly;
     align-items: center;
     padding: 10px;
-    width: 200px;
+    width: auto;
     height: 200px;
     background-color: rgb(255, 255, 255);
     font-family: var(---Poppins);
     border-radius: 5px;
+    margin: 1rem 1rem;
 }
 
 .icon-logged{
@@ -168,6 +169,7 @@
 .name-user{
     font-size: 1.3rem;
     color: rgba(9, 20, 17, 0.908);;
+    text-align: center;
 }
 
 .text-logged{
