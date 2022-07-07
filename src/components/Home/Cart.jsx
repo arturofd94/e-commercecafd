@@ -8,7 +8,6 @@ const Cart = ({cartOpen}) => {
 
   useEffect(() => {
     const url = 'https://ecommerce-api-react.herokuapp.com/api/v1/cart'
-    console.log(getConfig())
     axios.get(url, getConfig())
     .then(res => setProducts(res.data.data.cart.products))
     .catch(err => console.log(err))
@@ -19,7 +18,7 @@ const Cart = ({cartOpen}) => {
         <h2 className='cart__title'>Shopping Cart</h2>
         <section className='cart__products'>
           {
-            products.map(product => <ItemCart product={product}/>)
+            products.map(product => <ItemCart key={product.id} product={product}/>)
           }
         </section>
         <section className='cart__results'>
