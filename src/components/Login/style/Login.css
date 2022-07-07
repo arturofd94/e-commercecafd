@@ -133,3 +133,44 @@
 }
 
 
+.contain-logged{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    width: 200px;
+    height: 200px;
+    background-color: rgb(255, 255, 255);
+    font-family: var(---Poppins);
+    border-radius: 5px;
+    gap: .8rem;
+}
+
+.icon-logged{
+    width: max-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+    font-size: 5.5rem;
+    color: rgb(45, 94, 82);
+    position: relative;
+}
+
+.checked{
+    color:rgb(255, 255, 255);
+    top: 33%;
+    left: calc(50% + 16px);
+    position: absolute;
+    font-size: 1.2rem;
+}
+
+.name-user{
+    font-size: 1rem;
+}
+
+.text-logged{
+    color: rgb(14, 26, 26);
+}

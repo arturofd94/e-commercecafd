@@ -14,6 +14,8 @@ const Login = () => {
         axios.post(url,data)
         .then(res => {
             localStorage.setItem('token', res.data.data.token)
+            console.log(res.data.data.user)
+            localStorage.setItem('NameUser',JSON.stringify(res.data.data.user))
             navigate('/')
         })
         .catch(err => {
@@ -21,7 +23,7 @@ const Login = () => {
             setIsErrorLogin(true)
             setTimeout(() =>{
                 setIsErrorLogin(false)
-            },4500)
+            },4200)
             reset({
                 email:'',
                 password:''

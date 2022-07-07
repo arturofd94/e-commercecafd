@@ -14,7 +14,7 @@ const Cart = ({cartOpen}) => {
     axios.get(url, getConfig())
     .then(res => dispatch(setCartProducts(res.data.data.cart.products)))
     .catch(err => console.log(err))
-  }, [])
+  },[])
 
   return (
     <section className={`cart ${cartOpen && 'open'}`}>
