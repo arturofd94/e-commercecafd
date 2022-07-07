@@ -1,11 +1,14 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const ProductScreen = () => {
 
   const [product, setProduct] = useState()
   const [indexClass, setIndexClass] = useState(0)
+
+  
 
   const {id} = useParams()
 
@@ -39,7 +42,12 @@ const ProductScreen = () => {
 
 
   return (
-    <div className='product'>
+    <div className='product_container'>
+      <div className="history">
+        <Link to="/">Home</Link>
+        <div className="separator"></div>
+        <p>{product?.title}</p>
+      </div>
       <div className='slider'>
         <div onClick={clickPrev} className='slider__prev'>&#60;</div>
         <div className={`slider__container ${classImg[indexClass]}`}>
@@ -63,6 +71,28 @@ const ProductScreen = () => {
         <div onClick={() => setIndexClass(2)}
          className={indexClass === 2 ? 'dots dots_active' : 'dots'}></div>
       </div>
+      </div>
+      <div className='product_info'>
+        <div className="brand"></div>
+        <h2>{product?.title}</h2>
+        <div className="product_data">
+          <div className="product_options">
+            <div className="flex">
+              <div className="price">
+                <span className='label'>Price</span>
+                <span className='amount'>{`$${product.price}`}</span>
+              </div>
+              <div className="quantity">
+                <div className="label">Quantity</div>
+                <div className="flex">
+                  <button><i class='bx bx-minus'></i></button>
+                  <div className='value'>1</div>
+                  <button><i class='bx bx-plus'></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   )

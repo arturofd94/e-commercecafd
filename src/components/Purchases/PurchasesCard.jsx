@@ -1,30 +1,27 @@
 import React from 'react'
+import PurchaseItems from './PurchaseItems'
 
-const PurchasesCard = () => {
+const PurchasesCard = ({ purchase }) => {
+
+    const dateAndTimeOfPurchase = purchase.createdAt.split('T').join(' ')
+    const dateOfPurchase = dateAndTimeOfPurchase
+
+    console.log(purchase.cart.products)
+    
   return (
     <div className="purchase_item">
         <div className="header">
-        <p>July 5, 2022</p>
+        <p>{dateOfPurchase}</p>
         </div>
-            {/* Fecha traida de endpoint */}
-            
             <ul className="purchases_list">
-                {/* Map Purchases del endpoint */}
-                
-                <li className='product_item'>
-                    <div className="name">2021 Apple iMac</div>
-                    <div className='quantity'>
-                         <div className='box'>1</div>
-                    </div>
-                    <div className='price'>$1,500.00</div>
-                </li>
-                <li className='product_item'>
-                    <div className="name">2021 Apple iMac</div>
-                    <div className='quantity'>
-                        <div className='box'>1</div>
-                     </div>
-                    <div className='price'>$1,500.00</div>
-                </li>
+                {
+                    purchase?.cart.products.map( product => (
+                        <PurchaseItems
+                        key={product.id}
+                        product={product}
+                        />
+                    ))
+                }
             </ul>
     </div>
   )
