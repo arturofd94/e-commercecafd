@@ -144,7 +144,7 @@
     background-color: rgb(255, 255, 255);
     font-family: var(---Poppins);
     border-radius: 5px;
-    gap: .8rem;
+    gap: 1rem;
 }
 
 .icon-logged{
@@ -161,14 +161,14 @@
 
 .checked{
     color:rgb(255, 255, 255);
-    top: 33%;
-    left: calc(50% + 16px);
+    top: 19%;
+    left: calc(50% + 14px);
     position: absolute;
     font-size: 1.2rem;
 }
 
 .name-user{
-    font-size: 1rem;
+    font-size: 1.1rem;
 }
 
 .text-logged{
