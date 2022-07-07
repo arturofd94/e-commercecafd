@@ -80,14 +80,14 @@ const ProductScreen = () => {
             <div className="flex">
               <div className="price">
                 <span className='label'>Price</span>
-                <span className='amount'>{`$${product.price}`}</span>
+                <span className='amount'>{`$${product?.price}`}</span>
               </div>
               <div className="quantity">
                 <div className="label">Quantity</div>
                 <div className="flex">
-                  <button><i class='bx bx-minus'></i></button>
+                  <button><i className='bx bx-minus'></i></button>
                   <div className='value'>1</div>
-                  <button><i class='bx bx-plus'></i></button>
+                  <button><i className='bx bx-plus'></i></button>
                 </div>
               </div>
             </div>
