@@ -87,7 +87,7 @@ const ProductScreen = () => {
                 <div className="label">Quantity</div>
                 <div className="flex">
                   <button><i className='bx bx-minus'></i></button>
-                  <div className='value'>1</div>
+                    <div className='value'>1</div>
                   <button><i className='bx bx-plus'></i></button>
                 </div>
               </div>
