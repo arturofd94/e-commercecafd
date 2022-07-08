@@ -64,7 +64,7 @@ const Cart = ({cartOpen, setCartOpen}) => {
                 <p>Total</p>
                 <p>$ {getTotalPrice(cartProducts)}</p>
             </article>
-            <button onClick={doPurchase} className='cart__checkout'>Checkout</button>
+            <button onClick={doPurchase} className='cart__checkout'><span>Checkout</span><i></i></button>
         </section>
     </section>
   )
