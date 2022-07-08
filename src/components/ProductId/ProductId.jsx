@@ -7,6 +7,7 @@ const ProductScreen = () => {
 
   const [product, setProduct] = useState()
   const [indexClass, setIndexClass] = useState(0)
+  const [counter, setCounter] = useState(1)
 
   
 
