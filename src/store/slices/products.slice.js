@@ -13,7 +13,6 @@ export const { setProducts } = productsSlice.actions;
 
 export const getProducts = () => (dispatch) => {
     const URL = 'https://ecommerce-api-react.herokuapp.com/api/v1/products'
-
     return axios.get(URL)
         .then(res => dispatch(setProducts(res.data.data.products)))
         .catch(err => console.log(err))

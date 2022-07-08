@@ -1,18 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
 import ProductCard from '../Home/ProductCard'
 
 const SimilarProducts = ({ product }) => {
 
     const [filterProducts, setFilterProducts] = useState()
-
+    
     const allProducts = useSelector(state => state.products)
 
-    const navigate = useNavigate()
-
     useEffect(() => {
-        if (allProducts.length !== 0) {
+        if (allProducts?.length !== 0) {
             const filter = allProducts?.filter(e => e?.category?.name === product?.category)
             setFilterProducts(filter)
         }

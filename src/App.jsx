@@ -9,7 +9,7 @@ import Purchases from './components/Purchases/Purchases'
 import SignUp from './components/Login/SignUp'
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { getProductsCart } from './store/slices/cartProducts.slice'
+import { getProducts } from './store/slices/products.slice'
 
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(getProductsCart())
+    dispatch(getProducts())
   } , [])
 
   return (
