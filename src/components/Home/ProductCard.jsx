@@ -15,7 +15,7 @@ const ProductCard = ({ product }) => {
     const url = `https://ecommerce-api-react.herokuapp.com/api/v1/cart/`
     const productSend = {
       id: product.id, 
-      quantity: 2
+      quantity: 1
     }
     axios.post(url, productSend, getConfig())
     .then(res => {

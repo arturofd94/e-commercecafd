@@ -3,12 +3,16 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import SimilarProducts from './SimilarProducts'
+import getConfig from '../../utils/getConfig.js'
+import { useDispatch } from 'react-redux'
+import { getProductsCart } from '../../store/slices/cartProducts.slice.js'
 
 const ProductScreen = () => {
 
   const [product, setProduct] = useState()
   const [indexClass, setIndexClass] = useState(0)
   const [counter, setCounter] = useState(1)
+  const dispatch = useDispatch()
 
   const minusOne = () => {
     const minus = counter - 1
@@ -29,7 +33,8 @@ const ProductScreen = () => {
     axios.get(URL)
       .then(res => setProduct(res.data.data.product))
       .catch(err => console.log(err))
-  }, [])
+    setCounter(1)
+  }, [id])
 
 
   const clickPrev = () => {
@@ -48,6 +53,25 @@ const ProductScreen = () => {
     } else {
       setIndexClass(nextClass)
     }
+  }
+
+  const addToCart = () => {
+    const url = `https://ecommerce-api-react.herokuapp.com/api/v1/cart/`
+    const productSend = {
+      id: product.id, 
+      quantity: counter
+    }
+    axios.post(url, productSend, getConfig())
+    .then(res => {
+      dispatch(getProductsCart())
+      console.log(res.data)
+    })
+    .catch(err => {
+      if(err.response.status === 401){
+        navigate('/login')
+      }
+      console.log(err)
+    })
   }
 
 
@@ -95,13 +119,13 @@ const ProductScreen = () => {
               <div className="quantity">
                 <div className="label">Quantity</div>
                 <div className="flex">
-                  <button onClick={minusOne}><i className='bx bx-minus'></i></button>
+                  <button onClick={minusOne} className='button-product'><i className='bx bx-minus'></i></button>
                     <div className='value'>{counter}</div>
-                  <button onClick={plusOne}><i className='bx bx-plus'></i></button>
+                  <button onClick={plusOne} className='button-product'><i className='bx bx-plus'></i></button>
                 </div>
               </div>
             </div>
-            <button className='add_cart'>Add to cart    <i className='bx bx-cart-download'></i></button>
+            <button onClick={addToCart} className='add_cart'>Add to cart <i className='bx bx-cart-download'></i></button>
           </div>
           <p className='product_description'>{product?.description}</p>
         </div>
