@@ -7,6 +7,7 @@ const ProductScreen = () => {
 
   const [product, setProduct] = useState()
   const [indexClass, setIndexClass] = useState(0)
+  const [counter, setCounter] = useState(1)
 
   
 
@@ -86,7 +87,7 @@ const ProductScreen = () => {
                 <div className="label">Quantity</div>
                 <div className="flex">
                   <button><i class='bx bx-minus'></i></button>
-                  <div className='value'>1</div>
+                  <div className='value'>{counter}</div>
                   <button><i class='bx bx-plus'></i></button>
                 </div>
               </div>
