@@ -67,8 +67,8 @@ const Login = () => {
                         </div>
                         <button className='button-login'>Login</button>
                     </div>
-                    <div className='contain-to-signup'>
-                        <p>Don't have an account? <NavLink className='to-signup' to={'/signup'}>Sign Up</NavLink></p>
+                    <div className='contain-to'>
+                        <p>Already have an account? <NavLink className='to' to={'/signup'}>Sign Up</NavLink></p>
                     </div>
                 </div>
             </form>

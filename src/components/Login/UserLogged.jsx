@@ -13,6 +13,7 @@ const UserLogged = ({setToken}) => {
     setToken(newToken)
   }
 
+  console.log(user)
 
 
   return (
