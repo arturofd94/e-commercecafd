@@ -12,7 +12,8 @@ const ProductScreen = () => {
 
   const {id} = useParams()
 
-  const classImg = ['', 'second-img', 'third-img']
+  const classImg = ['first-img', 'second-img', 'third-img']
+  const classImgVisible = ['first', 'second', 'third']
   
   useEffect(() => {
     const URL = `https://ecommerce-api-react.herokuapp.com/api/v1/products/${id}`
@@ -52,12 +53,12 @@ const ProductScreen = () => {
         <div onClick={clickPrev} className='slider__prev'>&#60;</div>
         <div className={`slider__container ${classImg[indexClass]}`}>
           {
-            product?.productImgs.map(imgSrc => (
+            product?.productImgs.map((imgSrc, index) => (
               <img
               key={imgSrc}
               src={imgSrc}
               alt='product-image'
-              className='slider__imgs'
+              className={`slider__imgs ${classImgVisible[index]}`}
               />
             ))
           }
@@ -86,7 +87,7 @@ const ProductScreen = () => {
                 <div className="label">Quantity</div>
                 <div className="flex">
                   <button><i className='bx bx-minus'></i></button>
-                  <div className='value'>1</div>
+                    <div className='value'>1</div>
                   <button><i className='bx bx-plus'></i></button>
                 </div>
               </div>

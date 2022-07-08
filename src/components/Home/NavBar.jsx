@@ -1,5 +1,5 @@
 import Cart from './Cart'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, NavLink } from 'react-router-dom'
 import { Outlet } from 'react-router-dom'
 import { useState } from 'react'
 
@@ -8,8 +8,6 @@ const NavBar = () => {
     const navigate = useNavigate()
 
     const goToHome = () => navigate('/')
-    const goToLogin = () => navigate('/login')
-    const goToPurchases = () => navigate('/purchases')
     const handleClickCart = () => setCartOpen(!cartOpen)
   return (
     <>
@@ -17,12 +15,12 @@ const NavBar = () => {
        <div className='fixed'>
             <nav className='navbar_nav'>
                 <div className='nav_title' onClick={goToHome}><h1>e-commerce</h1></div>
-                <button onClick={goToLogin} className='nav_icon'>
+                <NavLink to='/login' className='nav_icon'>
                     <i className='bx bxs-user icon_user'></i>
-                </button>
-                <button className='nav_icon' onClick={goToPurchases}>
+                </NavLink>
+                <NavLink to='/purchases' className='nav_icon'>
                     <i className='bx bx-shopping-bag icon_user'></i>
-                </button>
+                </NavLink>
                 <button 
                     className='nav_icon'
                     onClick={handleClickCart}
@@ -33,7 +31,9 @@ const NavBar = () => {
             <div className='cart_modal'></div>
         </div> 
     </div>
-    <Cart cartOpen={cartOpen}/>
+    {
+        cartOpen && <Cart cartOpen={cartOpen} setCartOpen={setCartOpen}/> 
+    }
     <Outlet/>
     </>
   )

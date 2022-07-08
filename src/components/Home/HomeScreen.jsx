@@ -28,7 +28,10 @@ const HomeScreen = () => {
         const priceProduct = parseFloat(e.price)
         if((filterCategory === e.category.id || filterCategory === 0) && 
               e.title.toLowerCase().includes(searchedProduct?.toLowerCase()) &&
-                (priceProduct >= numberFrom && priceProduct <= numberTo || (!filterPrice['from'] && !filterPrice['to']))){
+                (priceProduct >= numberFrom && priceProduct <= numberTo || 
+                  (!filterPrice['from'] && !filterPrice['to']) || 
+                  (priceProduct >= numberFrom && !filterPrice['to']) || 
+                  (priceProduct <= numberTo && !filterPrice['from']))){
           return true
         }
       })

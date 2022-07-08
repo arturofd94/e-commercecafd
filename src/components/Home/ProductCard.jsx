@@ -9,6 +9,7 @@ const ProductCard = ({ product }) => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const goToProduct = () => navigate(`/product/${product.id}`)
+
   const addProductCart = e => {
     e.stopPropagation()
     const url = `https://ecommerce-api-react.herokuapp.com/api/v1/cart/`
@@ -21,7 +22,12 @@ const ProductCard = ({ product }) => {
       dispatch(getProductsCart())
       console.log(res.data)
     })
-    .catch(err => console.log(err))
+    .catch(err => {
+      if(err.response.status === 401){
+        navigate('/login')
+      }
+      console.log(err)
+    })
   }
   return (
     <li>

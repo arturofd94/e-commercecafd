@@ -1,18 +1,23 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import PurchasesCard from './PurchasesCard'
 import getConfig from '../../utils/getConfig'
 
 const ProductId = () => {
-
+  const navigate = useNavigate()
   const [purchases, setPurchases] = useState()
 
   useEffect(() => {
     const url = 'https://ecommerce-api-react.herokuapp.com/api/v1/purchases'
     axios.get(url, getConfig())
     .then(res => setPurchases(res.data.data.purchases))
-    .catch(err => console.log(err))
+    .catch(err => {
+      if(err.response.status === 401){
+        navigate('/login')
+      }
+      console.log(err)
+    })
   }, [])
 
 
