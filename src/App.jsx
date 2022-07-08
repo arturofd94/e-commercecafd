@@ -7,9 +7,18 @@ import LoginScreem from './components/Login/LoginScreem'
 import ProductId from './components/ProductId/ProductId'
 import Purchases from './components/Purchases/Purchases'
 import SignUp from './components/Login/SignUp'
+import { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import { getProductsCart } from './store/slices/cartProducts.slice'
 
 
 function App() {
+
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getProductsCart())
+  } , [])
 
   return (
     <div className="App">

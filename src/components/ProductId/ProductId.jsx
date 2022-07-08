@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
+import SimilarProducts from './SimilarProducts'
 
 const ProductScreen = () => {
 
@@ -9,7 +10,14 @@ const ProductScreen = () => {
   const [indexClass, setIndexClass] = useState(0)
   const [counter, setCounter] = useState(1)
 
-  
+  const minusOne = () => {
+    const minus = counter - 1
+    if(minus >= 1){
+      setCounter(minus)
+    }
+  }
+
+  const plusOne = () => setCounter(counter + 1)
 
   const {id} = useParams()
 
@@ -87,14 +95,19 @@ const ProductScreen = () => {
               <div className="quantity">
                 <div className="label">Quantity</div>
                 <div className="flex">
-                  <button><i className='bx bx-minus'></i></button>
-                    <div className='value'>1</div>
-                  <button><i className='bx bx-plus'></i></button>
+                  <button onClick={minusOne}><i className='bx bx-minus'></i></button>
+                    <div className='value'>{counter}</div>
+                  <button onClick={plusOne}><i className='bx bx-plus'></i></button>
                 </div>
               </div>
             </div>
+            <button className='add_cart'>Add to cart    <i className='bx bx-cart-download'></i></button>
           </div>
+          <p className='product_description'>{product?.description}</p>
         </div>
+        <SimilarProducts
+        product={product}
+        />
       </div>
     </div>
   )
