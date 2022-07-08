@@ -5,23 +5,24 @@ import UserLogged from './UserLogged'
 const LoginScreem = () => {
 
   const [token, setToken] = useState('')
-
+  
+  
   const changedToken = localStorage.getItem('token')
 
   useEffect(() => {
-      setToken(changedToken)
+    setToken(changedToken)
   }, [changedToken])
-  
+
 
   return (
-    <div className='contain-login'>  
-        {
-          token
+    <div className='contain-login'>
+      {
+        token
           ?
-          <UserLogged/>
+          <UserLogged setToken={setToken}/>
           :
-          <Login/>
-        }
+          <Login />
+      }
     </div>
   )
 }

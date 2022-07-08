@@ -6,6 +6,7 @@ import NavBar from './components/Home/NavBar'
 import LoginScreem from './components/Login/LoginScreem'
 import ProductId from './components/ProductId/ProductId'
 import Purchases from './components/Purchases/Purchases'
+import SignUp from './components/Login/SignUp'
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route path='/login' element={<LoginScreem />}/>
           <Route path='/product/:id' element={<ProductId/>}/>
           <Route path='/purchases' element={<Purchases/>}/>
+          <Route path='/signup' element={<SignUp/>}/>
         </Route>
       </Routes>
     </div>

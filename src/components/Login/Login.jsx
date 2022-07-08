@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { useNavigate } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 
 const Login = () => {
 
@@ -14,6 +14,8 @@ const Login = () => {
         axios.post(url,data)
         .then(res => {
             localStorage.setItem('token', res.data.data.token)
+            console.log(res.data.data.user)
+            localStorage.setItem('NameUser',JSON.stringify(res.data.data.user))
             navigate('/')
         })
         .catch(err => {
@@ -21,7 +23,7 @@ const Login = () => {
             setIsErrorLogin(true)
             setTimeout(() =>{
                 setIsErrorLogin(false)
-            },4500)
+            },4200)
             reset({
                 email:'',
                 password:''
@@ -64,6 +66,9 @@ const Login = () => {
                             }
                         </div>
                         <button className='button-login'>Login</button>
+                    </div>
+                    <div className='contain-to-signup'>
+                        <p>Don't have an account? <NavLink className='to-signup' to={'/signup'}>Sign Up</NavLink></p>
                     </div>
                 </div>
             </form>
