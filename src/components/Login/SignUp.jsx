@@ -10,7 +10,7 @@ const SignUp = () => {
   
     const navigate= useNavigate()
 
-    const submit = data =>{
+    const submitdata = data =>{
         const updateUser='https://ecommerce-api-react.herokuapp.com/api/v1/users'
 
         axios.post(updateUser,data)
@@ -44,7 +44,7 @@ const SignUp = () => {
 
             :
         <div className='card__signup'>
-        <form  className='form-signup' onSubmit={handleSubmit(submit)}>
+        <form  className='form-signup' onSubmit={handleSubmit(submitdata)}>
             <div className='contain-signup-name'>
             <h2>Sign Up</h2>
             </div>

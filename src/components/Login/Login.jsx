@@ -9,7 +9,6 @@ const Login = () => {
     const { handleSubmit, register, reset, formState: { errors } } = useForm()
     const navigate = useNavigate()
 
-<<<<<<< HEAD
     const submit = data => {
         const url = 'https://ecommerce-api-react.herokuapp.com/api/v1/users/login'
         axios.post(url, data)
@@ -29,25 +28,6 @@ const Login = () => {
                     email: '',
                     password: ''
                 })
-=======
-    const submit = data =>{
-        const url='https://ecommerce-api-react.herokuapp.com/api/v1/users/login'
-        axios.post(url,data)
-        .then(res => {
-            localStorage.setItem('token', res.data.data.token)
-            localStorage.setItem('NameUser',JSON.stringify(res.data.data.user))
-            navigate('/')
-        })
-        .catch(err => {
-            localStorage.setItem('token','')
-            setIsErrorLogin(true)
-            setTimeout(() =>{
-                setIsErrorLogin(false)
-            },4200)
-            reset({
-                email:'',
-                password:''
->>>>>>> main
             })
 
     }
