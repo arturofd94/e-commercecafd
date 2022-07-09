@@ -37,7 +37,7 @@ const SignUp = () => {
 
         <div className='user-create'>
             <div className='container-icon'>
-            <i class='bx bxs-user-detail'></i>
+            <i className='bx bxs-user-detail'></i>
             </div>
             <h2>¡Successfully <br/> registered user!</h2>
         </div>
