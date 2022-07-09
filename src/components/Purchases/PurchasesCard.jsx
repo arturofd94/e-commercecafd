@@ -3,9 +3,6 @@ import PurchaseItems from './PurchaseItems'
 import { cambiarFormatoFecha } from '../../helpers'
 
 const PurchasesCard = ({ purchase }) => {
-
-    const dateAndTimeOfPurchase = purchase.createdAt.split('T').join(' ')
-    const dateOfPurchase = dateAndTimeOfPurchase
     
   return (
     <div className="purchase_item">
