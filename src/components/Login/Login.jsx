@@ -6,29 +6,29 @@ import { NavLink, useNavigate } from 'react-router-dom'
 const Login = () => {
 
     const [isErrorLogin, setIsErrorLogin] = useState(false)
-    const {handleSubmit,register,reset}=useForm()
-    const navigate=useNavigate()
+    const { handleSubmit, register, reset, formState: { errors } } = useForm()
+    const navigate = useNavigate()
 
-    const submit = data =>{
-        const url='https://ecommerce-api-react.herokuapp.com/api/v1/users/login'
-        axios.post(url,data)
-        .then(res => {
-            localStorage.setItem('token', res.data.data.token)
-            console.log(res.data.data.user)
-            localStorage.setItem('NameUser',JSON.stringify(res.data.data.user))
-            navigate('/')
-        })
-        .catch(err => {
-            localStorage.setItem('token','')
-            setIsErrorLogin(true)
-            setTimeout(() =>{
-                setIsErrorLogin(false)
-            },4200)
-            reset({
-                email:'',
-                password:''
+    const submit = data => {
+        const url = 'https://ecommerce-api-react.herokuapp.com/api/v1/users/login'
+        axios.post(url, data)
+            .then(res => {
+                localStorage.setItem('token', res.data.data.token)
+                console.log(res.data.data.user)
+                localStorage.setItem('NameUser', JSON.stringify(res.data.data.user))
+                navigate('/')
             })
-        })
+            .catch(err => {
+                localStorage.setItem('token', '')
+                setIsErrorLogin(true)
+                setTimeout(() => {
+                    setIsErrorLogin(false)
+                }, 4200)
+                reset({
+                    email: '',
+                    password: ''
+                })
+            })
 
     }
 
@@ -50,11 +50,23 @@ const Login = () => {
                     <ul className='login__list'>
                         <li className='login-item'>
                             <label htmlFor='login-email' className='login__label'>Email</label>
-                            <input type="email" id='login-email' className='login__input' autoComplete='off' {...register('email')}/>
+                            <input type="email" id='login-email' placeholder='Your email' className='login__input' autoComplete='off' {...register('email', {
+                                required: {
+                                    value: true,
+                                    message: "Campo requerido"
+                                },
+                            })} />
+                            {errors.email && <span className='error-text'>{errors.email.message}</span>}
                         </li>
                         <li className='login-item'>
                             <label htmlFor="login-password" className='login__label'>Password</label>
-                            <input type="password" id='login-password' className='login__input' autoComplete='off' {...register('password')} />
+                            <input type="password" id='login-password'  placeholder='Your password' className='login__input' autoComplete='off' {...register('password', {
+                                required: {
+                                    value: true,
+                                    message: "Campo requerido"
+                                },
+                            })} />
+                            {errors.password && <span className='error-text'>{errors.password.message}</span>}
                         </li>
                     </ul>
                     <div className="contain-button">
