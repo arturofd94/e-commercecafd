@@ -29,7 +29,7 @@ const Cart = ({cartOpen, setCartOpen}) => {
       dispatch(getProductsCart())
     }
   }, [cartOpen])
-  
+
   const doPurchase = () => {
     const url = 'https://ecommerce-api-react.herokuapp.com/api/v1/purchases'
     const dataPurchase = {
@@ -46,7 +46,7 @@ const Cart = ({cartOpen, setCartOpen}) => {
   }
 
   const getTotalPrice = cartProducts => {
-    const prices = cartProducts.map(product => parseFloat(product.price))
+    const prices = cartProducts.map(product => parseFloat(product.price) * product.productsInCart.quantity)
     const totalPrice = prices.reduce((prev, curr) => prev + curr, 0)
     return totalPrice
   }

@@ -19,7 +19,7 @@ const NavBar = () => {
        <div className='fixed'>
             <nav className='navbar_nav'>
                 <div className='nav_title'><h1 onClick={goToHome}>e-commerce</h1></div>
-                <div className='menu' onClick={() => setIsOpenMenu(!isOpenMenu)}><i class='bx bx-menu-alt-right'></i></div>
+                <div className='menu' onClick={() => setIsOpenMenu(!isOpenMenu)}><i className='bx bx-menu-alt-right'></i></div>
                 <div className={`navbar_links ${isOpenMenu && 'open'}`}>
                     <NavLink to='/login' onClick={() => setIsOpenMenu(false)} className='nav_icon'>
                         <i className='bx bxs-user icon_user'></i>

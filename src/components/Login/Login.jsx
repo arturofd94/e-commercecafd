@@ -14,7 +14,6 @@ const Login = () => {
         axios.post(url,data)
         .then(res => {
             localStorage.setItem('token', res.data.data.token)
-            console.log(res.data.data.user)
             localStorage.setItem('NameUser',JSON.stringify(res.data.data.user))
             navigate('/')
         })
