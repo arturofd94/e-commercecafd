@@ -1,15 +1,26 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { NavLink } from 'react-router-dom'
+import { NavLink,useNavigate } from 'react-router-dom'
+import axios from 'axios'
 
 const SignUp = () => {
 
     const {handleSubmit,register,reset, formState:{errors}}=useForm()
+    const [userCreate, setUserCreate] = useState(false)
+  
+    const navigate= useNavigate()
 
-    const submit = data =>{
-        
-        
+    const submitdata = data =>{
+        const updateUser='https://ecommerce-api-react.herokuapp.com/api/v1/users'
 
+        axios.post(updateUser,data)
+        .then(res=>console.log(res.data.data))
+        .catch(err => console.log(err.data))
+
+        setUserCreate(true)
+        setTimeout(() => {
+        navigate('/login')
+        }, 2500);
        reset({
         email:'',
         firstName:'',
@@ -17,22 +28,34 @@ const SignUp = () => {
         password:'',
         phone:''
        })
+       
     }
 
   return (
     <section className='contain-signup'>
+        {userCreate?
+
+        <div className='user-create'>
+            <div className='container-icon'>
+            <i className='bx bxs-user-detail'></i>
+            </div>
+            <h2>¡Successfully <br/> registered user!</h2>
+        </div>
+
+            :
         <div className='card__signup'>
-        <form action="" className='form-signup' onSubmit={handleSubmit(submit)}>
+        <form  className='form-signup' onSubmit={handleSubmit(submitdata)}>
             <div className='contain-signup-name'>
             <h2>Sign Up</h2>
             </div>
             <ul className='login__list'>
                 <li className='login-item'>
                     <label htmlFor="iemail">Email</label>
-                    <input type="email" id="iemail" className='signup__input' autoComplete='off' {...register("email", {
+                    <input type="email" id="iemail" placeholder='Your email' className='signup__input' autoComplete='off' {...register("email", {
                     required: {
                       value: true,
-                      message: "Este campo es requerido"
+                      message: "Campo requerido"
+                      
                     },
                     pattern: {
                       value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
@@ -43,10 +66,10 @@ const SignUp = () => {
                 </li>
                 <li className='login-item'>
                     <label htmlFor="ifirstName">First Name</label>
-                    <input type="text" id="ifirstName" className='signup__input' autoComplete='off' {...register('firstName',{
+                    <input type="text" id="ifirstName" placeholder='Your first name' className='signup__input' autoComplete='off' {...register('firstName',{
                     required: {
                       value: true,
-                      message: "Este campo es requerido"
+                      message: "Campo requerido"
                     },
                     pattern: {
                       value: /[A-Za-z]$/i,
@@ -65,10 +88,10 @@ const SignUp = () => {
 
                 <li className='login-item'>
                     <label htmlFor="ilastName">Last Name</label>
-                    <input type="text" id="ilastName" className='signup__input' autoComplete='off' {...register('lastName',{
+                    <input type="text" id="ilastName" placeholder='Your last name' className='signup__input' autoComplete='off' {...register('lastName',{
                     required: {
                       value: true,
-                      message: "Este campo es requerido"
+                      message: "Campo requerido"
                     },
                     pattern: {
                       value:/[A-Za-z]$/i,
@@ -90,10 +113,10 @@ const SignUp = () => {
 
                 <li className='login-item'>
                     <label htmlFor="ipassword">Password</label>
-                    <input type="password" id="ipassword" className='signup__input' autoComplete='off' {...register("password", {
+                    <input type="password" id="ipassword" placeholder='Create password' className='signup__input' autoComplete='off' {...register("password", {
                     required: {
                       value: true,
-                      message: "Este campo es requerido"
+                      message: "Campo requerido"
                     },
                     minLength: {
                       value: 6,
@@ -106,10 +129,10 @@ const SignUp = () => {
 
                 <li className='login-item'>
                     <label htmlFor="inumber">Phone (10 character)</label>
-                    <input type="number" id="inumber" className='signup__input' autoComplete='off' {...register('phone',{
+                    <input type="number" id="inumber" className='signup__input' placeholder='Your phone' autoComplete='off' {...register('phone',{
                     required: {
                       value: true,
-                      message: "Este campo es requerido"
+                      message: "Campo requerido"
                     },
                     minLength: {
                       value: 10,
@@ -131,7 +154,7 @@ const SignUp = () => {
                         <p>Don't have an account? <NavLink className='to' to={'/login'}>Log in</NavLink></p>
                     </div>
         </form>
-        </div>
+        </div>}
     </section>
   )
 }

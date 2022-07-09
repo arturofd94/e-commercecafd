@@ -19,7 +19,7 @@ const UserLogged = ({setToken}) => {
   return (
     <div className='contain-logged'>
       <div className='icon-logged'>
-        <i className='bx bxs-user-circle' ></i> <h3 h3 className='checked'>✔</h3>
+        <i className='bx bxs-user-circle' ></i> <h3 className='checked'>✔</h3>
         <h2 className='name-user'>{`${user && user?.firstName} ${user && user?.lastName}`}</h2>
       </div>
       <NavLink to={"/login"} onClick={click} className="Navlink">
